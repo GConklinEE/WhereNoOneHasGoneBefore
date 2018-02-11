@@ -6,12 +6,11 @@ public class DeltaVMapSegment implements Serializable {
 	
 	// Constructors
 	
-	public DeltaVMapSegment(String name, double deltaVOutgoingWithAeroBraking, double deltaVReturningWithAeroBraking, double deltaVOutgoingWithoutAeroBraking, double deltaVReturningWithoutAeroBraking, 
-					        double groundLevelISPCorrectionFactorOutgoing, double groundLevelISPCorrectionFactorReturning, double deltaVToVacuumISPValidOutgoing, double deltaVToVacuumISPValidReturning,
-					        double gravityAtDestination) {
-		if(deltaVOutgoingWithAeroBraking <= 0 || deltaVReturningWithAeroBraking <= 0 || deltaVOutgoingWithoutAeroBraking <= 0 || deltaVReturningWithoutAeroBraking <= 0 || m_dGroundLevelISPCorrectionFactorOutgoing <= 0 || 
-		   m_dGroundLevelISPCorrectionFactorOutgoing > MAX_GROUND_LEVEL_ISP_CORRECTION_FACTOR || m_dGroundLevelISPCorrectionFactorReturning <= 0 || m_dGroundLevelISPCorrectionFactorReturning > MAX_GROUND_LEVEL_ISP_CORRECTION_FACTOR || 
-		   m_dDeltaVToVacuumISPValidOutgoing < 0 || m_dDeltaVToVacuumISPValidReturning < 0 || gravityAtDestination < 0) {
+	public DeltaVMapSegment(String name, double gravityAtDestination, double deltaVOutgoingWithAeroBraking, double deltaVReturningWithAeroBraking, double deltaVOutgoingWithoutAeroBraking, double deltaVReturningWithoutAeroBraking, 
+					        double groundLevelISPCorrectionFactorOutgoing, double groundLevelISPCorrectionFactorReturning, double deltaVToVacuumISPValidOutgoing, double deltaVToVacuumISPValidReturning) {
+		if(gravityAtDestination < 0 || deltaVOutgoingWithAeroBraking <= 0 || deltaVReturningWithAeroBraking <= 0 || deltaVOutgoingWithoutAeroBraking <= 0 || deltaVReturningWithoutAeroBraking <= 0 || 
+		   groundLevelISPCorrectionFactorOutgoing <= 0 || groundLevelISPCorrectionFactorOutgoing > MAX_GROUND_LEVEL_ISP_CORRECTION_FACTOR || groundLevelISPCorrectionFactorReturning <= 0 || 
+		   groundLevelISPCorrectionFactorReturning > MAX_GROUND_LEVEL_ISP_CORRECTION_FACTOR || deltaVToVacuumISPValidOutgoing < 0 || deltaVToVacuumISPValidReturning < 0) {
 			throw new ArithmeticException("DeltaVMapSegment.DeltaVMapSegment: Invalid constructor parameters!");
 		} else {
 			m_sName = name;
@@ -65,7 +64,7 @@ public class DeltaVMapSegment implements Serializable {
 	// Data members
 	
 	public static final double STANDARD_GRAVITY = 9.80665; // m/s^2 	
-	private static final double MAX_GROUND_LEVEL_ISP_CORRECTION_FACTOR= 1;
+	private static final double MAX_GROUND_LEVEL_ISP_CORRECTION_FACTOR = 1;
 	private static final long serialVersionUID = 1L; 
 	
 	private String m_sName;

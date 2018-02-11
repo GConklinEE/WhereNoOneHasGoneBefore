@@ -2,7 +2,7 @@ package whereNoOneHasGoneBefore.Models;
 
 import java.util.Vector;
 
-public abstract class ModelCollection<T> {
+public class ModelCollection<T> {
 	
 	// Constructors
 	
@@ -33,6 +33,10 @@ public abstract class ModelCollection<T> {
 		m_oModelCollection.set(index, model);
 	}
 	
+	public void deleteModel(T model) {
+		m_oModelCollection.removeElement(model);
+	}	
+	
 	public void deleteModel(int index) {
 		m_oModelCollection.removeElementAt(index);
 	}	
@@ -51,6 +55,6 @@ public abstract class ModelCollection<T> {
 
 	// Data members
 	
-	protected String m_sName;
+	private String m_sName;
 	protected Vector<T> m_oModelCollection; 
 }

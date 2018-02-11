@@ -240,6 +240,7 @@ public class StageGroup extends ModelCollection2Levels<Stage> implements Seriali
 		} else if (multipleMainStagesFound) {
 			throw new IllegalArgumentException("StageGroup.findMainStageIndex: The stage group has multiple main stages! Only one main stage is allowed in a stage group.");
 		}
+		we need to re-write this method, it sucks. 
 	}
 	
 	// Data members

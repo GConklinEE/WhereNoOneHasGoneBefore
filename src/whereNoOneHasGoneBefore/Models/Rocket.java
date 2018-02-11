@@ -281,4 +281,5 @@ public class Rocket extends SimulationModelCollection<StageGroup> implements Ser
 	private static final long serialVersionUID = 1L;
 
 	private double m_dPayloadMass;
+	fairings
 }
