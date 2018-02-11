@@ -27,15 +27,8 @@ public class Stage extends ModelCollection<Engine> implements Serializable, IClo
 	}
 	
 	// Methods
-		
-	public Stage cloneObject() {
-		Stage stage = new Stage(m_sName, m_dDryMass, m_dTotalMass, m_bEngineMassIncludedInStageMass, m_bIsMainStage, m_bCanAerobrakeAtDestination, 
-				                m_bCanLaunchAtDestination, m_bCanLandAtDestination, m_bIsReusable);
-		stage.setModelCollection(m_oModelCollection);
-		stage.partialBurn(m_dBurnTimeLeft);
-		stage.setIsSeperated(m_bIsSeperated);
-		return stage;
-	}
+	
+	get num engines
 	
 	public String getEngineNameByIndex(int engineIndex) {
 		return m_oModelCollection.elementAt(engineIndex).getName();
@@ -114,26 +107,7 @@ public class Stage extends ModelCollection<Engine> implements Serializable, IClo
 	public boolean getIsReusable() {
 		return m_bIsReusable;
 	}
-				
-	public void setEngineNameByIndex(int engineIndex, String name) {
-		m_oModelCollection.elementAt(engineIndex).setName(name);
-	}
-	
-	public void setEngineMassByIndex(int engineIndex, double mass) {
-		m_oModelCollection.elementAt(engineIndex).setMass(mass);
-		performTasks(false, true, false, true);
-	}
-	
-	public void setEngineVacuumISPByIndex(int engineIndex, double vacuumISP) {
-		m_oModelCollection.elementAt(engineIndex).setVacuumISP(vacuumISP);
-		performTasks(true, false, true, true);
-	}
-	
-	public void setEngineVacuumThrustByIndex(int engineIndex, double vacuumThrust) {
-		m_oModelCollection.elementAt(engineIndex).setVacuumThrust(vacuumThrust);
-		performTasks(true, false, true, true);
-	}	
-	
+			
 	public void setDryMass(double dryMass) {
 		if (checkDryMassErrors(dryMass)) {
 			throw new ArithmeticException("Stage.setDryMass: Invalid dryMass value!");

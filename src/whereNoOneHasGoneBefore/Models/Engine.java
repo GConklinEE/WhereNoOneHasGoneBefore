@@ -2,7 +2,7 @@ package whereNoOneHasGoneBefore.Models;
 
 import java.io.Serializable;
 
-public class Engine implements Serializable, ICloneable<Engine>{
+public class Engine implements Serializable{
 
 	// Constructors
 	
@@ -18,10 +18,6 @@ public class Engine implements Serializable, ICloneable<Engine>{
 	}
 	
 	// Methods
-	
-	public Engine cloneObject() {
-		return new Engine(m_sName, m_dMass, m_dVacuumISP, m_dVacuumThrust);
-	}
 
 	public String getName() {
 		return m_sName;

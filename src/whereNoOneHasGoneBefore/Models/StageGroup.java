@@ -21,6 +21,9 @@ public class StageGroup extends ModelCollection2Levels<Stage> implements Seriali
 		stageGroup.setModelCollection(m_oModelCollection);
 		return stageGroup;
 	}
+	
+	get num stages and engines
+	get stage names by index
 		
 	public String getEngineNameByIndex(int stageIndex, int engineIndex) {
 		return m_oModelCollection.elementAt(stageIndex).getEngineNameByIndex(engineIndex);
@@ -232,10 +235,10 @@ public class StageGroup extends ModelCollection2Levels<Stage> implements Seriali
 		if(!mainStageFound) {
 			m_iMainStageIndex = -1;
 			if(m_oModelCollection.size() != 0) {
-				throw new NoSuchElementException("The stage group is not empty, but there is no main stage present! A main stage must always be present in a non-empty stage group.");
+				throw new NoSuchElementException("StageGroup.findMainStageIndex: The stage group is not empty, but there is no main stage present! A main stage must always be present in a non-empty stage group.");
 			}
 		} else if (multipleMainStagesFound) {
-			throw new IllegalArgumentException("The stage group has multiple main stages! Only one main stage is allowed in a stage group.");
+			throw new IllegalArgumentException("StageGroup.findMainStageIndex: The stage group has multiple main stages! Only one main stage is allowed in a stage group.");
 		}
 	}
 	

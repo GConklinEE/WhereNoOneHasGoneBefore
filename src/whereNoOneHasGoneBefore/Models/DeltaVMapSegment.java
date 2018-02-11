@@ -2,7 +2,7 @@ package whereNoOneHasGoneBefore.Models;
 
 import java.io.Serializable;
 
-public class DeltaVMapSegment implements Serializable, ICloneable<DeltaVMapSegment> {
+public class DeltaVMapSegment implements Serializable {
 	
 	// Constructors
 	
@@ -28,16 +28,6 @@ public class DeltaVMapSegment implements Serializable, ICloneable<DeltaVMapSegme
 	}
 	
 	// Methods
-	
-	public DeltaVMapSegment cloneObject() {
-		DeltaVMapSegment deltaVMapSegment = new DeltaVMapSegment(m_sName, m_dDeltaVOutgoingWithAeroBraking, m_dDeltaVReturningWithAeroBraking, m_dDeltaVOutgoingWithoutAeroBraking, m_dDeltaVReturningWithoutAeroBraking, 
-				                                                 m_dGroundLevelISPCorrectionFactorOutgoing, m_dGroundLevelISPCorrectionFactorReturning, m_dDeltaVToVacuumISPValidOutgoing, m_dDeltaVToVacuumISPValidReturning,
-				                                                 m_dGravityAtDestination);
-		deltaVMapSegment.setMaxPayload(m_dMaxPayloadOutgoing, true);
-		deltaVMapSegment.setMaxPayload(m_dMaxPayloadReturning, false);
-		
-		return deltaVMapSegment;
-	}
 	
 	public String getName() {
 		return m_sName;
@@ -72,25 +62,6 @@ public class DeltaVMapSegment implements Serializable, ICloneable<DeltaVMapSegme
 		return m_dDeltaVToVacuumISPValidReturning;
 	}
 	
-	public double getMaxPayload(boolean outgoing) {
-		if(outgoing) {
-			return m_dMaxPayloadOutgoing;
-		} 
-		return m_dMaxPayloadReturning;
-	}
-	
-	public void setMaxPayload(double maxPayload, boolean outgoing) {
-		if(maxPayload < 0 ) {
-			throw new ArithmeticException("DeltaVMapSegment.setMaxPayload: Invalid maxPayload value!");
-		} else {
-			if(outgoing) {
-				m_dMaxPayloadOutgoing = maxPayload;
-			} else {
-				m_dMaxPayloadReturning = maxPayload;
-			}
-		}
-	}
-	
 	// Data members
 	
 	public static final double STANDARD_GRAVITY = 9.80665; // m/s^2 	
@@ -107,6 +78,4 @@ public class DeltaVMapSegment implements Serializable, ICloneable<DeltaVMapSegme
 	private double m_dGroundLevelISPCorrectionFactorReturning; // (0-1], 1 = vacuum
 	private double m_dDeltaVToVacuumISPValidOutgoing; 
 	private double m_dDeltaVToVacuumISPValidReturning; 
-	private double m_dMaxPayloadOutgoing;
-	private double m_dMaxPayloadReturning;
 }
